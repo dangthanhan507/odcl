@@ -1,0 +1,101 @@
+:py:mod:`odcl.seq_pipeline`
+===========================
+
+.. py:module:: odcl.seq_pipeline
+
+.. autoapi-nested-parse::
+
+   
+   ..
+       !! processed by numpydoc !!
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   odcl.seq_pipeline.imageSegment
+   odcl.seq_pipeline.offset_targets
+
+
+
+Attributes
+~~~~~~~~~~
+
+.. autoapisummary::
+
+   odcl.seq_pipeline.tpu_model
+
+
+.. py:function:: imageSegment(img, segments)
+
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:function:: offset_targets(targets, offset, img_shape, segment)
+
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:data:: tpu_model
+   :annotation: = mobilenet_edge.tflite
+
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+

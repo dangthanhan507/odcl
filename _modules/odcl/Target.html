@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>odcl.Target &mdash; UAV Forge Object Detection, Classification, and Localization Pipeline  documentation</title><link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> UAV Forge Object Detection, Classification, and Localization Pipeline
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/uci-uav-forge/odcl">Git Repository</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../autoapi/index.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">UAV Forge Object Detection, Classification, and Localization Pipeline</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+      <li>odcl.Target</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for odcl.Target</h1><div class="highlight"><pre>
+<span></span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Idea:</span>
+<span class="sd">	After Object Detection Model extracts all of the targets detected,</span>
+<span class="sd">	we will have to store it in a data structure that will contain all of the targets, and more data.</span>
+
+<span class="sd">	2 classes will help accomplish this task in the pipeline.</span>
+<span class="sd">		-TargetStore class that will store all of the targets and do any manipulation required of it.</span>
+<span class="sd">		-Target class that will store Targets (not necessarily a copy of cropped image) and all the metadata that comes with it</span>
+<span class="sd">			(GPS Location, Letter, Shape, ...etc.)</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<div class="viewcode-block" id="Target"><a class="viewcode-back" href="../../autoapi/odcl/Target/index.html#odcl.Target.Target">[docs]</a><span class="k">class</span> <span class="nc">Target</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">shape</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">letter</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">heading</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">shape_color</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">letter_color</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">gps</span><span class="p">:(</span><span class="nb">float</span><span class="p">,</span><span class="nb">float</span><span class="p">)</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">            class attributes:</span>
+<span class="sd">            -----------------</span>
+<span class="sd">            shape -&gt; specified shape of the target (string)</span>
+<span class="sd">            letter -&gt; specified letter of the target (char/string)</span>
+<span class="sd">            heading -&gt; specified cardinal orientation of the target (string) (all 8 directions, not just N,S,E,W)</span>
+<span class="sd">            shape_color -&gt; specified shape/background color of the target (string)</span>
+<span class="sd">            letter_color -&gt; specified letter color of the target (string)</span>
+<span class="sd">            gps -&gt; specified latitude,longitude of target. 2-tuple floats (latitude,longitude)</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">shape</span> <span class="o">=</span> <span class="n">shape</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">letter</span> <span class="o">=</span> <span class="n">letter</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">heading</span> <span class="o">=</span> <span class="n">heading</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">shape_color</span> <span class="o">=</span> <span class="n">shape_color</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">letter_color</span> <span class="o">=</span> <span class="n">letter_color</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gps</span> <span class="o">=</span> <span class="n">gps</span>
+
+
+    <span class="c1">#getter methods</span>
+<div class="viewcode-block" id="Target.getGPS"><a class="viewcode-back" href="../../autoapi/odcl/Target/index.html#odcl.Target.Target.getGPS">[docs]</a>    <span class="k">def</span> <span class="nf">getGPS</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">gps</span></div>
+<div class="viewcode-block" id="Target.getShape"><a class="viewcode-back" href="../../autoapi/odcl/Target/index.html#odcl.Target.Target.getShape">[docs]</a>    <span class="k">def</span> <span class="nf">getShape</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">shape</span></div>
+<div class="viewcode-block" id="Target.getLetter"><a class="viewcode-back" href="../../autoapi/odcl/Target/index.html#odcl.Target.Target.getLetter">[docs]</a>    <span class="k">def</span> <span class="nf">getLetter</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">letter</span></div>
+<div class="viewcode-block" id="Target.getHeading"><a class="viewcode-back" href="../../autoapi/odcl/Target/index.html#odcl.Target.Target.getHeading">[docs]</a>    <span class="k">def</span> <span class="nf">getHeading</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">heading</span></div>
+<div class="viewcode-block" id="Target.getShapeColor"><a class="viewcode-back" href="../../autoapi/odcl/Target/index.html#odcl.Target.Target.getShapeColor">[docs]</a>    <span class="k">def</span> <span class="nf">getShapeColor</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">shape_color</span></div>
+<div class="viewcode-block" id="Target.getLetterColor"><a class="viewcode-back" href="../../autoapi/odcl/Target/index.html#odcl.Target.Target.getLetterColor">[docs]</a>    <span class="k">def</span> <span class="nf">getLetterColor</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">letter_color</span></div>
+    <span class="c1">#setter methods</span>
+<div class="viewcode-block" id="Target.setGPS"><a class="viewcode-back" href="../../autoapi/odcl/Target/index.html#odcl.Target.Target.setGPS">[docs]</a>    <span class="k">def</span> <span class="nf">setGPS</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">val</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gps</span> <span class="o">=</span> <span class="n">val</span></div>
+<div class="viewcode-block" id="Target.setShape"><a class="viewcode-back" href="../../autoapi/odcl/Target/index.html#odcl.Target.Target.setShape">[docs]</a>    <span class="k">def</span> <span class="nf">setShape</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">val</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">shape</span> <span class="o">=</span> <span class="n">val</span></div>
+<div class="viewcode-block" id="Target.setLetter"><a class="viewcode-back" href="../../autoapi/odcl/Target/index.html#odcl.Target.Target.setLetter">[docs]</a>    <span class="k">def</span> <span class="nf">setLetter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">val</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">letter</span> <span class="o">=</span> <span class="n">val</span></div>
+<div class="viewcode-block" id="Target.setHeading"><a class="viewcode-back" href="../../autoapi/odcl/Target/index.html#odcl.Target.Target.setHeading">[docs]</a>    <span class="k">def</span> <span class="nf">setHeading</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">val</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">heading</span> <span class="o">=</span> <span class="n">val</span></div>
+<div class="viewcode-block" id="Target.setShapeColor"><a class="viewcode-back" href="../../autoapi/odcl/Target/index.html#odcl.Target.Target.setShapeColor">[docs]</a>    <span class="k">def</span> <span class="nf">setShapeColor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">val</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">shape_color</span> <span class="o">=</span> <span class="n">val</span></div>
+<div class="viewcode-block" id="Target.setLetterColor"><a class="viewcode-back" href="../../autoapi/odcl/Target/index.html#odcl.Target.Target.setLetterColor">[docs]</a>    <span class="k">def</span> <span class="nf">setLetterColor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">val</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">letter_color</span> <span class="o">=</span> <span class="n">val</span></div></div>
+
+
+<div class="viewcode-block" id="TargetList"><a class="viewcode-back" href="../../autoapi/odcl/Target/index.html#odcl.Target.TargetList">[docs]</a><span class="k">class</span> <span class="nc">TargetList</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">            the idea of this class is to store a list of targets.</span>
+<span class="sd">            class attributes:</span>
+<span class="sd">            -----------------</span>
+<span class="sd">            target_list: just a list of targets.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">target_list</span> <span class="o">=</span> <span class="p">[]</span>
+<div class="viewcode-block" id="TargetList.add_target"><a class="viewcode-back" href="../../autoapi/odcl/Target/index.html#odcl.Target.TargetList.add_target">[docs]</a>    <span class="k">def</span> <span class="nf">add_target</span><span class="p">(</span><span class="n">target</span><span class="p">:</span> <span class="n">Target</span><span class="p">,</span> <span class="n">arc_tolerance</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1e-2</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">            input: target (from Target class in Target.py)</span>
+<span class="sd">            output: nothing</span>
+<span class="sd">                    self.target_list gets added</span>
+
+<span class="sd">            *NOTE: as of right now, the arc tolerance I set is arbitrary,</span>
+<span class="sd">            and should be modified when an appropriate one is found after</span>
+<span class="sd">            flight test.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">if</span> <span class="n">target</span><span class="o">.</span><span class="n">getGPS</span><span class="p">()</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        
+        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">target_list</span><span class="p">:</span>
+            <span class="p">(</span><span class="n">lat0</span><span class="p">,</span><span class="n">lon0</span><span class="p">)</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">getGPS</span><span class="p">()</span>
+            <span class="p">(</span><span class="n">lat1</span><span class="p">,</span><span class="n">lon1</span><span class="p">)</span> <span class="o">=</span> <span class="n">target</span><span class="o">.</span><span class="n">getGPS</span><span class="p">()</span>
+            <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">                arc calculation between 2 gps coords</span>
+<span class="sd">                using the haversine formula</span>
+<span class="sd">                will return the great-circle distance in meters.</span>
+<span class="sd">            &#39;&#39;&#39;</span>
+            <span class="n">lat0</span> <span class="o">*=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">180</span>
+            <span class="n">lat1</span> <span class="o">*=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">180</span>
+            <span class="n">lon0</span> <span class="o">*=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">180</span>
+            <span class="n">lon1</span> <span class="o">*=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">180</span>
+            <span class="n">dlat</span> <span class="o">=</span> <span class="n">lat1</span> <span class="o">-</span> <span class="n">lat0</span>
+            <span class="n">dlon</span> <span class="o">=</span> <span class="n">lon1</span> <span class="o">-</span> <span class="n">lon0</span>
+            
+            <span class="n">calc_a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">dlat</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">lat0</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">lat1</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">dlon</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+            <span class="n">calc_c</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">arctan2</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">calc_a</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">calc_a</span><span class="p">))</span>
+            <span class="n">arc</span> <span class="o">=</span> <span class="n">EARTH_RADIUS</span> <span class="o">*</span> <span class="n">c</span>
+
+            <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">arc</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">arc_tolerance</span><span class="p">:</span>
+                <span class="k">return</span> <span class="kc">None</span> <span class="c1"># don&#39;t add the target cuz there&#39;s already one w/ similar gps coordinates</span>
+        
+        <span class="c1">#if it is not close to none of the targets. (it is not a duplicate)</span>
+        <span class="c1">#then append to list.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">target_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">target</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TargetList.write_to_json"><a class="viewcode-back" href="../../autoapi/odcl/Target/index.html#odcl.Target.TargetList.write_to_json">[docs]</a>    <span class="k">def</span> <span class="nf">write_to_json</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">            Objective of function:</span>
+<span class="sd">                Write the target lists into a readable json</span>
+<span class="sd">                submittable to competition.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">pass</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Mike Sutherland &amp; An Dang.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

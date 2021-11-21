@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>odcl.geoLocation &mdash; UAV Forge Object Detection, Classification, and Localization Pipeline  documentation</title><link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> UAV Forge Object Detection, Classification, and Localization Pipeline
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/uci-uav-forge/odcl">Git Repository</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">UAV Forge Object Detection, Classification, and Localization Pipeline</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li><code class="xref py py-mod docutils literal notranslate"><span class="pre">odcl.geoLocation</span></code></li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/autoapi/odcl/geoLocation/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="module-odcl.geoLocation">
+<span id="odcl-geolocation"></span><h1><a class="reference internal" href="#module-odcl.geoLocation" title="odcl.geoLocation"><code class="xref py py-mod docutils literal notranslate"><span class="pre">odcl.geoLocation</span></code></a><a class="headerlink" href="#module-odcl.geoLocation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="geolocation-library">
+<dl class="simple">
+<dt>Should include stufff like:</dt><dd><ul class="simple">
+<li><p>trig calculations</p></li>
+<li><p>lidar or any form of depth estimation needec</p></li>
+<li><p>any additional calculations to estimate relative distance</p></li>
+</ul>
+</dd>
+<dt>Requires:</dt><dd><ul class="simple">
+<li><p>pixel -&gt; relative distance REQUIRES -&gt; camera to be calibrated in vsutils.py</p></li>
+<li><p>rotating x,y translations to absolute REQUIRES -&gt; heading from UAV</p></li>
+<li><p>getting depth REQUIRES -&gt; altitude from UAV</p></li>
+<li><p>doing any rotation w/ altitude REQUIRES -&gt; rotation angles of gimbal</p></li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="functions">
+<h3>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#odcl.geoLocation.depth_givenAltitude" title="odcl.geoLocation.depth_givenAltitude"><code class="xref py py-obj docutils literal notranslate"><span class="pre">depth_givenAltitude</span></code></a>(altitude, pitch=0, roll=0, yaw=0)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#odcl.geoLocation.get_relDist" title="odcl.geoLocation.get_relDist"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_relDist</span></code></a>(pixel_coord, img_shape, focal, depth)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#odcl.geoLocation.get_absCoord" title="odcl.geoLocation.get_absCoord"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_absCoord</span></code></a>(tvecs, heading)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#odcl.geoLocation.meters_to_gps" title="odcl.geoLocation.meters_to_gps"><code class="xref py py-obj docutils literal notranslate"><span class="pre">meters_to_gps</span></code></a>(dx, dy)</p></td>
+<td><p>Input:</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="attributes">
+<h3>Attributes<a class="headerlink" href="#attributes" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#odcl.geoLocation.EARTH_RADIUS" title="odcl.geoLocation.EARTH_RADIUS"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EARTH_RADIUS</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<dl class="data">
+<dt id="odcl.geoLocation.EARTH_RADIUS">
+<code class="sig-prename descclassname">odcl.geoLocation.</code><code class="sig-name descname">EARTH_RADIUS</code><em class="property"> = 6378137</em><a class="headerlink" href="#odcl.geoLocation.EARTH_RADIUS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="odcl.geoLocation.depth_givenAltitude">
+<code class="sig-prename descclassname">odcl.geoLocation.</code><code class="sig-name descname">depth_givenAltitude</code><span class="sig-paren">(</span><em class="sig-param">altitude</em>, <em class="sig-param">pitch=0</em>, <em class="sig-param">roll=0</em>, <em class="sig-param">yaw=0</em><span class="sig-paren">)</span><a class="headerlink" href="#odcl.geoLocation.depth_givenAltitude" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="odcl.geoLocation.get_relDist">
+<code class="sig-prename descclassname">odcl.geoLocation.</code><code class="sig-name descname">get_relDist</code><span class="sig-paren">(</span><em class="sig-param">pixel_coord</em>, <em class="sig-param">img_shape</em>, <em class="sig-param">focal</em>, <em class="sig-param">depth</em><span class="sig-paren">)</span><a class="headerlink" href="#odcl.geoLocation.get_relDist" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="odcl.geoLocation.get_absCoord">
+<code class="sig-prename descclassname">odcl.geoLocation.</code><code class="sig-name descname">get_absCoord</code><span class="sig-paren">(</span><em class="sig-param">tvecs</em>, <em class="sig-param">heading</em><span class="sig-paren">)</span><a class="headerlink" href="#odcl.geoLocation.get_absCoord" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="odcl.geoLocation.meters_to_gps">
+<code class="sig-prename descclassname">odcl.geoLocation.</code><code class="sig-name descname">meters_to_gps</code><span class="sig-paren">(</span><em class="sig-param">dx</em>, <em class="sig-param">dy</em><span class="sig-paren">)</span><a class="headerlink" href="#odcl.geoLocation.meters_to_gps" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Input:</dt><dd><p>dx: distance in x (in meters)
+dy: distance in y (in meters)</p>
+</dd>
+<dt>Output:</dt><dd><p>latitude: degrees
+longitude: degrees</p>
+</dd>
+</dl>
+<p>converts distances from meters to gps coordinates.</p>
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Mike Sutherland &amp; An Dang.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

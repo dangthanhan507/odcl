@@ -1,0 +1,104 @@
+:py:mod:`odcl.threadingInterpreter`
+===================================
+
+.. py:module:: odcl.threadingInterpreter
+
+.. autoapi-nested-parse::
+
+   
+   ..
+       !! processed by numpydoc !!
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   odcl.threadingInterpreter.threadingInterpreter
+
+
+
+
+.. py:class:: threadingInterpreter(targetInterpreter, tiler, genLock, targetLock, worker_id)
+
+   Bases: :py:obj:`threading.Thread`
+
+   
+   A class that represents a thread of control.
+
+   This class can be safely subclassed in a limited fashion. There are two ways
+   to specify the activity: by passing a callable object to the constructor, or
+   by overriding the run() method in a subclass.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+   .. py:method:: start_work(self, img, tileGen, targetList)
+
+      
+      Parameters:
+      ----------
+      img: numpy array of np.uint8
+              shape (m,n,3) where mxn is dimension of image.
+      tileGen: generator of tile 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+   .. py:method:: run(self)
+
+      
+      No Parameters
+      No Returns
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+

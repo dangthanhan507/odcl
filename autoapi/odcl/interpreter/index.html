@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>odcl.interpreter &mdash; UAV Forge Object Detection, Classification, and Localization Pipeline  documentation</title><link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> UAV Forge Object Detection, Classification, and Localization Pipeline
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/uci-uav-forge/odcl">Git Repository</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">UAV Forge Object Detection, Classification, and Localization Pipeline</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li><code class="xref py py-mod docutils literal notranslate"><span class="pre">odcl.interpreter</span></code></li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/autoapi/odcl/interpreter/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="module-odcl.interpreter">
+<span id="odcl-interpreter"></span><h1><a class="reference internal" href="#module-odcl.interpreter" title="odcl.interpreter"><code class="xref py py-mod docutils literal notranslate"><span class="pre">odcl.interpreter</span></code></a><a class="headerlink" href="#module-odcl.interpreter" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="classes">
+<h3>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#odcl.interpreter.TargetInterpreter" title="odcl.interpreter.TargetInterpreter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TargetInterpreter</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="attributes">
+<h3>Attributes<a class="headerlink" href="#attributes" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#odcl.interpreter._EDGETPU_SHARED_LIB" title="odcl.interpreter._EDGETPU_SHARED_LIB"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_EDGETPU_SHARED_LIB</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#odcl.interpreter.TENSOR_ORDERS" title="odcl.interpreter.TENSOR_ORDERS"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TENSOR_ORDERS</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#odcl.interpreter.Target" title="odcl.interpreter.Target"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Target</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<dl class="data">
+<dt id="odcl.interpreter._EDGETPU_SHARED_LIB">
+<code class="sig-prename descclassname">odcl.interpreter.</code><code class="sig-name descname">_EDGETPU_SHARED_LIB</code><a class="headerlink" href="#odcl.interpreter._EDGETPU_SHARED_LIB" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="data">
+<dt id="odcl.interpreter.TENSOR_ORDERS">
+<code class="sig-prename descclassname">odcl.interpreter.</code><code class="sig-name descname">TENSOR_ORDERS</code><a class="headerlink" href="#odcl.interpreter.TENSOR_ORDERS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="data">
+<dt id="odcl.interpreter.Target">
+<code class="sig-prename descclassname">odcl.interpreter.</code><code class="sig-name descname">Target</code><a class="headerlink" href="#odcl.interpreter.Target" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="odcl.interpreter.TargetInterpreter">
+<em class="property">class </em><code class="sig-prename descclassname">odcl.interpreter.</code><code class="sig-name descname">TargetInterpreter</code><span class="sig-paren">(</span><em class="sig-param">model_path</em>, <em class="sig-param">label_path</em>, <em class="sig-param">cpu</em>, <em class="sig-param">thresh</em>, <em class="sig-param">order_key='mobilenet'</em><span class="sig-paren">)</span><a class="headerlink" href="#odcl.interpreter.TargetInterpreter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dl class="method">
+<dt id="odcl.interpreter.TargetInterpreter.get_labels">
+<code class="sig-name descname">get_labels</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">label_path</em><span class="sig-paren">)</span><a class="headerlink" href="#odcl.interpreter.TargetInterpreter.get_labels" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="odcl.interpreter.TargetInterpreter.make_interpreter">
+<code class="sig-name descname">make_interpreter</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">model_path_or_content</em>, <em class="sig-param">device=None</em>, <em class="sig-param">delegate=None</em><span class="sig-paren">)</span><a class="headerlink" href="#odcl.interpreter.TargetInterpreter.make_interpreter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make new TPU interpreter instance given a model path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>model_path_or_content</strong><span class="classifier">str</span></dt><dd><p>filepath to model. recommended to use absolute path in ROS scripts</p>
+</dd>
+<dt><strong>device</strong><span class="classifier">str, optional</span></dt><dd><p>None -&gt; use any TPU
+“:&lt;n&gt;” -&gt; use nth TPU
+“usb” -&gt; use USB TPU
+“usb:&lt;n&gt; -&gt; use nth USB TPU
+“pci” -&gt; use PCI TPU
+“pci:&lt;n&gt; -&gt; use nth PCI TPU</p>
+</dd>
+<dt><strong>delegate</strong><span class="classifier">loaded TPU Delegate object, optional</span></dt><dd><p>supercedes “device” flag</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>tflite.Interpreter</dt><dd><p>the interpreter</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="odcl.interpreter.TargetInterpreter.load_edgetpu_delegate">
+<code class="sig-name descname">load_edgetpu_delegate</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">options=None</em><span class="sig-paren">)</span><a class="headerlink" href="#odcl.interpreter.TargetInterpreter.load_edgetpu_delegate" title="Permalink to this definition">¶</a></dt>
+<dd><p>load edgetpu delegate from _EDGETPU_SHARED_LIB with options</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>options</strong><span class="classifier">dict, optional</span></dt><dd><p>TPU options, by default None</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>loaded Delegate object</dt><dd><p>the TPU</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="odcl.interpreter.TargetInterpreter.input_tensor">
+<code class="sig-name descname">input_tensor</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#odcl.interpreter.TargetInterpreter.input_tensor" title="Permalink to this definition">¶</a></dt>
+<dd><p>get input tensor</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>tensor</dt><dd><p>the input tensor</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="odcl.interpreter.TargetInterpreter.set_input_tensor">
+<code class="sig-name descname">set_input_tensor</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">image</em>, <em class="sig-param">resize=False</em><span class="sig-paren">)</span><a class="headerlink" href="#odcl.interpreter.TargetInterpreter.set_input_tensor" title="Permalink to this definition">¶</a></dt>
+<dd><p>set the input tensor from (cv2) image array of size (h, w c)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>image</strong><span class="classifier">np.array</span></dt><dd><p>h, w, c</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="odcl.interpreter.TargetInterpreter.output_tensor">
+<code class="sig-name descname">output_tensor</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">i</em><span class="sig-paren">)</span><a class="headerlink" href="#odcl.interpreter.TargetInterpreter.output_tensor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return output tensor regardless of quantization parameters</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>i</strong><span class="classifier">int</span></dt><dd><p>which output tensor to grab</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>tensor</dt><dd><p>output tensor</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="odcl.interpreter.TargetInterpreter.input_image_size">
+<code class="sig-name descname">input_image_size</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#odcl.interpreter.TargetInterpreter.input_image_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get interpreter input size</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>tuple of int</dt><dd><p>(height, width, colors)</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="odcl.interpreter.TargetInterpreter.interpret">
+<code class="sig-name descname">interpret</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">img</em><span class="sig-paren">)</span><a class="headerlink" href="#odcl.interpreter.TargetInterpreter.interpret" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="odcl.interpreter.TargetInterpreter.get_output">
+<code class="sig-name descname">get_output</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">score_threshold</em><span class="sig-paren">)</span><a class="headerlink" href="#odcl.interpreter.TargetInterpreter.get_output" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return list of detected objects</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>score_threshold</strong><span class="classifier">float</span></dt><dd><p>number from 0-1 indicating thresh percentage</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>list of Target</dt><dd><p>list of namedtuples containing target info</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Mike Sutherland &amp; An Dang.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>odcl.pipeline &mdash; UAV Forge Object Detection, Classification, and Localization Pipeline  documentation</title><link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> UAV Forge Object Detection, Classification, and Localization Pipeline
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/uci-uav-forge/odcl">Git Repository</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">UAV Forge Object Detection, Classification, and Localization Pipeline</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li><code class="xref py py-mod docutils literal notranslate"><span class="pre">odcl.pipeline</span></code></li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/autoapi/odcl/pipeline/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="module-odcl.pipeline">
+<span id="odcl-pipeline"></span><h1><a class="reference internal" href="#module-odcl.pipeline" title="odcl.pipeline"><code class="xref py py-mod docutils literal notranslate"><span class="pre">odcl.pipeline</span></code></a><a class="headerlink" href="#module-odcl.pipeline" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="classes">
+<h3>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#odcl.pipeline.BBox" title="odcl.pipeline.BBox"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BBox</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#odcl.pipeline.TargetDrawer" title="odcl.pipeline.TargetDrawer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TargetDrawer</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="attributes">
+<h3>Attributes<a class="headerlink" href="#attributes" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#odcl.pipeline._EDGETPU_SHARED_LIB" title="odcl.pipeline._EDGETPU_SHARED_LIB"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_EDGETPU_SHARED_LIB</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#odcl.pipeline.Target" title="odcl.pipeline.Target"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Target</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#odcl.pipeline.ap" title="odcl.pipeline.ap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ap</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<dl class="data">
+<dt id="odcl.pipeline._EDGETPU_SHARED_LIB">
+<code class="sig-prename descclassname">odcl.pipeline.</code><code class="sig-name descname">_EDGETPU_SHARED_LIB</code><a class="headerlink" href="#odcl.pipeline._EDGETPU_SHARED_LIB" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="data">
+<dt id="odcl.pipeline.Target">
+<code class="sig-prename descclassname">odcl.pipeline.</code><code class="sig-name descname">Target</code><a class="headerlink" href="#odcl.pipeline.Target" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="odcl.pipeline.BBox">
+<em class="property">class </em><code class="sig-prename descclassname">odcl.pipeline.</code><code class="sig-name descname">BBox</code><span class="sig-paren">(</span><em class="sig-param">xmin</em>, <em class="sig-param">ymin</em>, <em class="sig-param">xmax</em>, <em class="sig-param">ymax</em><span class="sig-paren">)</span><a class="headerlink" href="#odcl.pipeline.BBox" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dl class="method">
+<dt id="odcl.pipeline.BBox.overlap">
+<code class="sig-name descname">overlap</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">other</em><span class="sig-paren">)</span><a class="headerlink" href="#odcl.pipeline.BBox.overlap" title="Permalink to this definition">¶</a></dt>
+<dd><p>check if this bbox overlaps with another bbox</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="odcl.pipeline.TargetDrawer">
+<em class="property">class </em><code class="sig-prename descclassname">odcl.pipeline.</code><code class="sig-name descname">TargetDrawer</code><span class="sig-paren">(</span><em class="sig-param">labels</em><span class="sig-paren">)</span><a class="headerlink" href="#odcl.pipeline.TargetDrawer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dl class="method">
+<dt id="odcl.pipeline.TargetDrawer.get_rand_color">
+<em class="property">static </em><code class="sig-name descname">get_rand_color</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#odcl.pipeline.TargetDrawer.get_rand_color" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="odcl.pipeline.TargetDrawer.draw_tile_frame">
+<code class="sig-name descname">draw_tile_frame</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">img</em>, <em class="sig-param">alpha=0.9</em><span class="sig-paren">)</span><a class="headerlink" href="#odcl.pipeline.TargetDrawer.draw_tile_frame" title="Permalink to this definition">¶</a></dt>
+<dd><p>draw a frame around the input. Useful for visualizing tiles.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="odcl.pipeline.TargetDrawer.draw_target_bbox">
+<code class="sig-name descname">draw_target_bbox</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">img</em>, <em class="sig-param">target</em>, <em class="sig-param">color=None</em><span class="sig-paren">)</span><a class="headerlink" href="#odcl.pipeline.TargetDrawer.draw_target_bbox" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draw a bbox, class label, and confidence score around a target onto image</p>
+<p>updated image with target drawn onto it</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="odcl.pipeline.TargetDrawer.draw_all">
+<code class="sig-name descname">draw_all</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">img</em>, <em class="sig-param">targets</em>, <em class="sig-param">color=None</em><span class="sig-paren">)</span><a class="headerlink" href="#odcl.pipeline.TargetDrawer.draw_all" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draw all current targets onto img</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>img</strong><span class="classifier">cv2 Image</span></dt><dd><p>(H, W, 3) 8-bit</p>
+</dd>
+<dt><strong>targets: list of Target</strong></dt><dd><p>targets to draw</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>(H, W, 3) 8-bit image</dt><dd><p>Image with targets drawn</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="odcl.pipeline.TargetDrawer.make_target_bbox_img_opencv">
+<code class="sig-name descname">make_target_bbox_img_opencv</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">img</em>, <em class="sig-param">targets</em><span class="sig-paren">)</span><a class="headerlink" href="#odcl.pipeline.TargetDrawer.make_target_bbox_img_opencv" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="data">
+<dt id="odcl.pipeline.ap">
+<code class="sig-prename descclassname">odcl.pipeline.</code><code class="sig-name descname">ap</code><a class="headerlink" href="#odcl.pipeline.ap" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Mike Sutherland &amp; An Dang.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

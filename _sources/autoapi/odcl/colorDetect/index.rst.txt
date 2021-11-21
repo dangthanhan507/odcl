@@ -1,0 +1,124 @@
+:py:mod:`odcl.colorDetect`
+==========================
+
+.. py:module:: odcl.colorDetect
+
+.. autoapi-nested-parse::
+
+   
+   ..
+       !! processed by numpydoc !!
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   odcl.colorDetect.sort_masks
+   odcl.colorDetect.get_segmentations
+   odcl.colorDetect.plot_LAB
+
+
+
+Attributes
+~~~~~~~~~~
+
+.. autoapisummary::
+
+   odcl.colorDetect.devmode
+
+
+.. py:function:: sort_masks(mask_list)
+
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:function:: get_segmentations(flat_img, labels, shape, centers)
+
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:function:: plot_LAB(image_LAB, image_BGR)
+
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:data:: devmode
+   :annotation: = True
+
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>odcl.colors &mdash; UAV Forge Object Detection, Classification, and Localization Pipeline  documentation</title><link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> UAV Forge Object Detection, Classification, and Localization Pipeline
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/uci-uav-forge/odcl">Git Repository</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">UAV Forge Object Detection, Classification, and Localization Pipeline</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li><code class="xref py py-mod docutils literal notranslate"><span class="pre">odcl.colors</span></code></li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/autoapi/odcl/colors/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="module-odcl.colors">
+<span id="odcl-colors"></span><h1><a class="reference internal" href="#module-odcl.colors" title="odcl.colors"><code class="xref py py-mod docutils literal notranslate"><span class="pre">odcl.colors</span></code></a><a class="headerlink" href="#module-odcl.colors" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="functions">
+<h3>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#odcl.colors.make_colors_plot" title="odcl.colors.make_colors_plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">make_colors_plot</span></code></a>(ax, rgb_colors)</p></td>
+<td><p>Make a plot on the Axes <cite>ax</cite> that shows the colors in the array <cite>rgb_colors</cite></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#odcl.colors.get_colors_kmeans" title="odcl.colors.get_colors_kmeans"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_colors_kmeans</span></code></a>(raw, resize_raw=1.0, n_colors=4, sample_pxs=5000, alpha=0.7, d=7, sigma1=15, sigma2=15, gkernelsize=(7, 7))</p></td>
+<td><p>Get colors of an input image with k-means algorithm.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="attributes">
+<h3>Attributes<a class="headerlink" href="#attributes" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#odcl.colors.ap" title="odcl.colors.ap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ap</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<dl class="function">
+<dt id="odcl.colors.make_colors_plot">
+<code class="sig-prename descclassname">odcl.colors.</code><code class="sig-name descname">make_colors_plot</code><span class="sig-paren">(</span><em class="sig-param">ax</em>, <em class="sig-param">rgb_colors</em><span class="sig-paren">)</span><a class="headerlink" href="#odcl.colors.make_colors_plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make a plot on the Axes <cite>ax</cite> that shows the colors in the array <cite>rgb_colors</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>ax</strong><span class="classifier">matplotlib.Axes</span></dt><dd><p>the axes onto which to draw the plot</p>
+</dd>
+<dt><strong>rgb_colors</strong><span class="classifier">np.ndarray</span></dt><dd><p>shape (n_colors, 3) array of RGB colors</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>matplotlib.Axes</dt><dd><p>updated axes object. It’s not necessary to store this as it does not copy</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="odcl.colors.get_colors_kmeans">
+<code class="sig-prename descclassname">odcl.colors.</code><code class="sig-name descname">get_colors_kmeans</code><span class="sig-paren">(</span><em class="sig-param">raw</em>, <em class="sig-param">resize_raw=1.0</em>, <em class="sig-param">n_colors=4</em>, <em class="sig-param">sample_pxs=5000</em>, <em class="sig-param">alpha=0.7</em>, <em class="sig-param">d=7</em>, <em class="sig-param">sigma1=15</em>, <em class="sig-param">sigma2=15</em>, <em class="sig-param">gkernelsize=(7</em>, <em class="sig-param">7)</em><span class="sig-paren">)</span><a class="headerlink" href="#odcl.colors.get_colors_kmeans" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get colors of an input image with k-means algorithm.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>raw</strong><span class="classifier">np.ndarray (h, w, 3)</span></dt><dd><p>Array representing RGB image. It is (h, w, 3) where (h, w) are the image height,
+width in pixels. You can use <cite>cv2.imread(filename)</cite> to get a suitable input</p>
+</dd>
+<dt><strong>resize_raw</strong><span class="classifier">float, optional</span></dt><dd><p>amount to resize the image. this should be a float between 1 and 0; a value of 0.5
+will make an image which is a quarter (half width, height) as the original image
+this is because bilinear smoothing can be slow on very large images, so use this
+to speed up the bilinar filtering step, by default 1</p>
+</dd>
+<dt><strong>n_colors</strong><span class="classifier">int, optional</span></dt><dd><p>no of colors to extract from the raw image, by default 4</p>
+</dd>
+<dt><strong>sample_pxs</strong><span class="classifier">int, optional</span></dt><dd><p>number of pixels to sample. This is another scaling step used primarily to scale
+kmeans. The algorithm will sample this number of pixels over the image uniformly
+before computing clusters. More pixels sampled causes kmeans to take longer, but
+will generate more accurate clusters; accuracy will fall off significantly if this
+is set too low, by default 5000</p>
+</dd>
+<dt><strong>alpha: float, optional</strong></dt><dd><p>pre-smoothing coefficient. 0 means no pre-smoothing, 1 means entire image is pre-
+smoothed. Values in between are combinations of the smoothed and raw image.</p>
+</dd>
+<dt><strong>d</strong><span class="classifier">int, optional</span></dt><dd><p>bilinear filter scale, by default 7</p>
+</dd>
+<dt><strong>sigma1</strong><span class="classifier">int, optional</span></dt><dd><p>bilinear filter scale sigma 1, by default 15</p>
+</dd>
+<dt><strong>sigma2</strong><span class="classifier">int, optional</span></dt><dd><p>bilinear filter scale sigma 2, by default 15</p>
+</dd>
+<dt><strong>gkernelsize</strong><span class="classifier">tuple, optional</span></dt><dd><p>gaussian blur kernel size, by default (7, 7)</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>np.ndarray</dt><dd><p>shape (n_colors, 3) array of rgb colors</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="data">
+<dt id="odcl.colors.ap">
+<code class="sig-prename descclassname">odcl.colors.</code><code class="sig-name descname">ap</code><a class="headerlink" href="#odcl.colors.ap" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Mike Sutherland &amp; An Dang.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

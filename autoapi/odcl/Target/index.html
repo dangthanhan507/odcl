@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>odcl.Target &mdash; UAV Forge Object Detection, Classification, and Localization Pipeline  documentation</title><link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> UAV Forge Object Detection, Classification, and Localization Pipeline
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/uci-uav-forge/odcl">Git Repository</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">UAV Forge Object Detection, Classification, and Localization Pipeline</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li><code class="xref py py-mod docutils literal notranslate"><span class="pre">odcl.Target</span></code></li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/autoapi/odcl/Target/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="module-odcl.Target">
+<span id="odcl-target"></span><h1><a class="reference internal" href="#module-odcl.Target" title="odcl.Target"><code class="xref py py-mod docutils literal notranslate"><span class="pre">odcl.Target</span></code></a><a class="headerlink" href="#module-odcl.Target" title="Permalink to this headline">¶</a></h1>
+<dl>
+<dt>Idea:</dt><dd><p>After Object Detection Model extracts all of the targets detected,
+we will have to store it in a data structure that will contain all of the targets, and more data.</p>
+<dl>
+<dt>2 classes will help accomplish this task in the pipeline.</dt><dd><p>-TargetStore class that will store all of the targets and do any manipulation required of it.
+-Target class that will store Targets (not necessarily a copy of cropped image) and all the metadata that comes with it</p>
+<blockquote>
+<div><p>(GPS Location, Letter, Shape, …etc.)</p>
+</div></blockquote>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="section" id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="classes">
+<h3>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#odcl.Target.Target" title="odcl.Target.Target"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Target</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#odcl.Target.TargetList" title="odcl.Target.TargetList"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TargetList</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="odcl.Target.Target">
+<em class="property">class </em><code class="sig-prename descclassname">odcl.Target.</code><code class="sig-name descname">Target</code><span class="sig-paren">(</span><em class="sig-param">shape: str = None</em>, <em class="sig-param">letter: str = None</em>, <em class="sig-param">heading: str = None</em>, <em class="sig-param">shape_color: str = None</em>, <em class="sig-param">letter_color: str = None</em>, <em class="sig-param">gps: (float</em>, <em class="sig-param">float) = None</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/odcl/Target.html#Target"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#odcl.Target.Target" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="odcl.Target.Target.getGPS">
+<code class="sig-name descname">getGPS</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/odcl/Target.html#Target.getGPS"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#odcl.Target.Target.getGPS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="odcl.Target.Target.getShape">
+<code class="sig-name descname">getShape</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/odcl/Target.html#Target.getShape"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#odcl.Target.Target.getShape" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="odcl.Target.Target.getLetter">
+<code class="sig-name descname">getLetter</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/odcl/Target.html#Target.getLetter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#odcl.Target.Target.getLetter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="odcl.Target.Target.getHeading">
+<code class="sig-name descname">getHeading</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/odcl/Target.html#Target.getHeading"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#odcl.Target.Target.getHeading" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="odcl.Target.Target.getShapeColor">
+<code class="sig-name descname">getShapeColor</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/odcl/Target.html#Target.getShapeColor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#odcl.Target.Target.getShapeColor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="odcl.Target.Target.getLetterColor">
+<code class="sig-name descname">getLetterColor</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/odcl/Target.html#Target.getLetterColor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#odcl.Target.Target.getLetterColor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="odcl.Target.Target.setGPS">
+<code class="sig-name descname">setGPS</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">val</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/odcl/Target.html#Target.setGPS"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#odcl.Target.Target.setGPS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="odcl.Target.Target.setShape">
+<code class="sig-name descname">setShape</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">val</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/odcl/Target.html#Target.setShape"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#odcl.Target.Target.setShape" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="odcl.Target.Target.setLetter">
+<code class="sig-name descname">setLetter</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">val</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/odcl/Target.html#Target.setLetter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#odcl.Target.Target.setLetter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="odcl.Target.Target.setHeading">
+<code class="sig-name descname">setHeading</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">val</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/odcl/Target.html#Target.setHeading"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#odcl.Target.Target.setHeading" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="odcl.Target.Target.setShapeColor">
+<code class="sig-name descname">setShapeColor</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">val</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/odcl/Target.html#Target.setShapeColor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#odcl.Target.Target.setShapeColor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="odcl.Target.Target.setLetterColor">
+<code class="sig-name descname">setLetterColor</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">val</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/odcl/Target.html#Target.setLetterColor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#odcl.Target.Target.setLetterColor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="odcl.Target.TargetList">
+<em class="property">class </em><code class="sig-prename descclassname">odcl.Target.</code><code class="sig-name descname">TargetList</code><a class="reference internal" href="../../../_modules/odcl/Target.html#TargetList"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#odcl.Target.TargetList" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="odcl.Target.TargetList.add_target">
+<code class="sig-name descname">add_target</code><span class="sig-paren">(</span><em class="sig-param">target: Target</em>, <em class="sig-param">arc_tolerance: float = 0.01</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/odcl/Target.html#TargetList.add_target"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#odcl.Target.TargetList.add_target" title="Permalink to this definition">¶</a></dt>
+<dd><p>input: target (from Target class in Target.py)
+output: nothing</p>
+<blockquote>
+<div><p>self.target_list gets added</p>
+</div></blockquote>
+<p><a href="#id1"><span class="problematic" id="id2">*</span></a>NOTE: as of right now, the arc tolerance I set is arbitrary,
+and should be modified when an appropriate one is found after
+flight test.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="odcl.Target.TargetList.write_to_json">
+<code class="sig-name descname">write_to_json</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/odcl/Target.html#TargetList.write_to_json"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#odcl.Target.TargetList.write_to_json" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Objective of function:</dt><dd><p>Write the target lists into a readable json
+submittable to competition.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Mike Sutherland &amp; An Dang.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

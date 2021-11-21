@@ -1,0 +1,170 @@
+:py:mod:`odcl.geoLocation`
+==========================
+
+.. py:module:: odcl.geoLocation
+
+.. autoapi-nested-parse::
+
+   GeoLocation Library
+   --------------------
+
+   Should include stufff like:
+       - trig calculations
+       - lidar or any form of depth estimation needec
+       - any additional calculations to estimate relative distance
+
+   Requires:
+       - pixel -> relative distance REQUIRES -> camera to be calibrated in vsutils.py
+       - rotating x,y translations to absolute REQUIRES -> heading from UAV
+       - getting depth REQUIRES -> altitude from UAV
+       - doing any rotation w/ altitude REQUIRES -> rotation angles of gimbal
+
+   ..
+       !! processed by numpydoc !!
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   odcl.geoLocation.depth_givenAltitude
+   odcl.geoLocation.get_relDist
+   odcl.geoLocation.get_absCoord
+   odcl.geoLocation.meters_to_gps
+
+
+
+Attributes
+~~~~~~~~~~
+
+.. autoapisummary::
+
+   odcl.geoLocation.EARTH_RADIUS
+
+
+.. py:data:: EARTH_RADIUS
+   :annotation: = 6378137
+
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:function:: depth_givenAltitude(altitude, pitch=0, roll=0, yaw=0)
+
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:function:: get_relDist(pixel_coord, img_shape, focal, depth)
+
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:function:: get_absCoord(tvecs, heading)
+
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:function:: meters_to_gps(dx, dy)
+
+   
+   Input:
+       dx: distance in x (in meters)
+       dy: distance in y (in meters)
+   Output:
+       latitude: degrees
+       longitude: degrees
+
+   converts distances from meters to gps coordinates.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>odcl.threadingInterpreter &mdash; UAV Forge Object Detection, Classification, and Localization Pipeline  documentation</title><link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> UAV Forge Object Detection, Classification, and Localization Pipeline
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/uci-uav-forge/odcl">Git Repository</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../autoapi/index.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">UAV Forge Object Detection, Classification, and Localization Pipeline</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+      <li>odcl.threadingInterpreter</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for odcl.threadingInterpreter</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">threading</span>
+<span class="kn">from</span> <span class="nn">threading</span> <span class="kn">import</span> <span class="n">Thread</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Required Modules:</span>
+<span class="sd">        interpreter.py</span>
+<span class="sd">        tile_image.py</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Worker class for creating worker threads solely on processing tiled images.</span>
+<span class="sd">    Written 11/3/2021. </span>
+<span class="sd">&#39;&#39;&#39;</span>
+<div class="viewcode-block" id="threadingInterpreter"><a class="viewcode-back" href="../../autoapi/odcl/threadingInterpreter/index.html#odcl.threadingInterpreter.threadingInterpreter">[docs]</a><span class="k">class</span> <span class="nc">threadingInterpreter</span><span class="p">(</span><span class="n">Thread</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">targetInterpreter</span><span class="p">,</span> <span class="n">tiler</span><span class="p">,</span> <span class="n">genLock</span><span class="p">,</span> <span class="n">targetLock</span><span class="p">,</span> <span class="n">worker_id</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">            Attributes:</span>
+<span class="sd">            -----------</span>
+<span class="sd">            worker_id -&gt; int</span>
+<span class="sd">                        thread # of this particular worker object</span>
+
+<span class="sd">            targetInterpreter -&gt; targetInterpreter Object (in interpreter.py)</span>
+<span class="sd">                                    contains a specific model instance to perform inference</span>
+
+<span class="sd">            tiler -&gt; Tiler Object (tile_image.py)</span>
+<span class="sd">                    </span>
+
+<span class="sd">            genLock, targetLock -&gt; threading.lock object (threading module)</span>
+<span class="sd">                        an object that can be used to Lock actions to prevent multiple threads</span>
+<span class="sd">                        from accessing same variables. (common multithreading problem)</span>
+
+
+<span class="sd">            img -&gt; numpy array or opencv array [shape = (m,n,3)] mxn dimension</span>
+<span class="sd">                    current image for thread to work on</span>
+<span class="sd">            </span>
+<span class="sd">            </span>
+<span class="sd">            Inheritance:</span>
+<span class="sd">            ------------</span>
+<span class="sd">                Inherits from Thread which gives this multi-threading abilities.</span>
+
+
+<span class="sd">            Notes:</span>
+<span class="sd">            -------</span>
+<span class="sd">             IMPORTANT: MAKE SURE THAT ALL WORKER THREAD INSTANCES SHARE THE SAME -&gt; img, tileGen, and genLock.</span>
+<span class="sd">             this is because the sole design of this multithreaded class is based around those assumptions and designed as such.</span>
+
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">worker_id</span>
+        <span class="c1">#a targetInterpreter for the thread to use</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">targetInterpreter</span> <span class="o">=</span> <span class="n">targetInterpreter</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tiler</span> <span class="o">=</span> <span class="n">tiler</span>
+        
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">daemon</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> 
+        <span class="c1">#setting daemon = True means these threads are killed upon death of main.</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">working</span> <span class="o">=</span> <span class="kc">False</span> <span class="c1">#indicates whether thread is currently working</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">img</span> <span class="o">=</span> <span class="kc">None</span> <span class="c1">#represents current image being worked on by thread (pass by reference)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tileGen</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">targetList</span> <span class="o">=</span> <span class="kc">None</span>
+
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">genLock</span> <span class="o">=</span> <span class="n">genLock</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">targetLock</span> <span class="o">=</span> <span class="n">targetLock</span>
+
+<div class="viewcode-block" id="threadingInterpreter.start_work"><a class="viewcode-back" href="../../autoapi/odcl/threadingInterpreter/index.html#odcl.threadingInterpreter.threadingInterpreter.start_work">[docs]</a>    <span class="k">def</span> <span class="nf">start_work</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">img</span><span class="p">,</span> <span class="n">tileGen</span><span class="p">,</span> <span class="n">targetList</span><span class="p">):</span> <span class="c1">#this sets up the base image to tile on</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Parameters:</span>
+<span class="sd">        ----------</span>
+<span class="sd">        img: numpy array of np.uint8</span>
+<span class="sd">                shape (m,n,3) where mxn is dimension of image.</span>
+<span class="sd">        tileGen: generator of tile </span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">        --------</span>
+<span class="sd">        None</span>
+
+<span class="sd">        Description/Notes:</span>
+<span class="sd">            the img is a pass-by-reference. therefore,</span>
+<span class="sd">            no expensive calls are being made by calling this function.</span>
+
+<span class="sd">            this image will be set as current image that worker thread will work on.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">img</span> <span class="o">=</span> <span class="n">img</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tileGen</span> <span class="o">=</span> <span class="n">tileGen</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">targetList</span> <span class="o">=</span> <span class="n">targetList</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">working</span> <span class="o">=</span> <span class="kc">True</span></div>
+
+
+<div class="viewcode-block" id="threadingInterpreter.run"><a class="viewcode-back" href="../../autoapi/odcl/threadingInterpreter/index.html#odcl.threadingInterpreter.threadingInterpreter.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        No Parameters</span>
+<span class="sd">        No Returns</span>
+
+<span class="sd">        Job:</span>
+<span class="sd">        ------</span>
+<span class="sd">        This thread&#39;s sole purpose is to wait for an image and generator from Tiler Object to be fed</span>
+<span class="sd">        into this object.</span>
+
+<span class="sd">        Afterwards, it will access the generator and perform inference on whatever tile it gets.</span>
+<span class="sd">        for multiple threads, there is a Lock placed to prevent multiple access to generator at once.</span>
+
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="k">while</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">working</span><span class="p">:</span>
+                <span class="k">pass</span> <span class="c1">#if nothing is in queue, don&#39;t do anything</span>
+            
+            <span class="c1">#after above while, we can say that there is an image to work on, and we tiles to pull from</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">genLock</span><span class="o">.</span><span class="n">acquire</span><span class="p">()</span> <span class="c1">#prevent multiple access of generator</span>
+                <span class="p">(</span><span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span><span class="p">)</span> <span class="p">,</span> <span class="p">(</span><span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">),</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">)</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tileGen</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">genLock</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
+
+                <span class="bp">self</span><span class="o">.</span><span class="n">targetInterpreter</span><span class="o">.</span><span class="n">interpret</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">img</span><span class="p">[</span><span class="n">ymin</span><span class="p">:</span><span class="n">ymax</span><span class="p">,</span> <span class="n">xmin</span><span class="p">:</span><span class="n">xmax</span><span class="p">])</span> <span class="c1">#this will update the targetInterpreter</span>
+
+                <span class="bp">self</span><span class="o">.</span><span class="n">targetLock</span><span class="o">.</span><span class="n">acquire</span><span class="p">()</span>
+                <span class="k">for</span> <span class="n">target</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">targetInterpreter</span><span class="o">.</span><span class="n">targets</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">targetList</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tiler</span><span class="o">.</span><span class="n">parse_localTarget</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">xmin</span><span class="p">,</span> <span class="n">ymin</span><span class="p">))</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">targetLock</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
+            <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span> 
+                <span class="c1">#the only &quot;error&quot; this code will handle is StopIteration from the generator in Tile</span>
+                <span class="c1">#this error signals that generator is empty.</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">working</span> <span class="o">=</span> <span class="kc">False</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">genLock</span><span class="o">.</span><span class="n">locked</span><span class="p">():</span> <span class="bp">self</span><span class="o">.</span><span class="n">genLock</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">targetLock</span><span class="o">.</span><span class="n">locked</span><span class="p">():</span> <span class="bp">self</span><span class="o">.</span><span class="n">targetLock</span><span class="o">.</span><span class="n">release</span><span class="p">()</span></div></div>
+
+
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Mike Sutherland &amp; An Dang.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

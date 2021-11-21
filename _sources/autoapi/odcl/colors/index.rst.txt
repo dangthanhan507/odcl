@@ -1,0 +1,155 @@
+:py:mod:`odcl.colors`
+=====================
+
+.. py:module:: odcl.colors
+
+.. autoapi-nested-parse::
+
+   
+   ..
+       !! processed by numpydoc !!
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   odcl.colors.make_colors_plot
+   odcl.colors.get_colors_kmeans
+
+
+
+Attributes
+~~~~~~~~~~
+
+.. autoapisummary::
+
+   odcl.colors.ap
+
+
+.. py:function:: make_colors_plot(ax, rgb_colors)
+
+   
+   Make a plot on the Axes `ax` that shows the colors in the array `rgb_colors`
+
+
+   :Parameters:
+
+       **ax** : matplotlib.Axes
+           the axes onto which to draw the plot
+
+       **rgb_colors** : np.ndarray
+           shape (n_colors, 3) array of RGB colors
+
+   :Returns:
+
+       matplotlib.Axes
+           updated axes object. It's not necessary to store this as it does not copy
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:function:: get_colors_kmeans(raw, resize_raw=1.0, n_colors=4, sample_pxs=5000, alpha=0.7, d=7, sigma1=15, sigma2=15, gkernelsize=(7, 7))
+
+   
+   Get colors of an input image with k-means algorithm.
+
+
+   :Parameters:
+
+       **raw** : np.ndarray (h, w, 3)
+           Array representing RGB image. It is (h, w, 3) where (h, w) are the image height,
+           width in pixels. You can use `cv2.imread(filename)` to get a suitable input
+
+       **resize_raw** : float, optional
+           amount to resize the image. this should be a float between 1 and 0; a value of 0.5
+           will make an image which is a quarter (half width, height) as the original image
+           this is because bilinear smoothing can be slow on very large images, so use this
+           to speed up the bilinar filtering step, by default 1
+
+       **n_colors** : int, optional
+           no of colors to extract from the raw image, by default 4
+
+       **sample_pxs** : int, optional
+           number of pixels to sample. This is another scaling step used primarily to scale
+           kmeans. The algorithm will sample this number of pixels over the image uniformly
+           before computing clusters. More pixels sampled causes kmeans to take longer, but
+           will generate more accurate clusters; accuracy will fall off significantly if this
+           is set too low, by default 5000
+
+       **alpha: float, optional**
+           pre-smoothing coefficient. 0 means no pre-smoothing, 1 means entire image is pre-
+           smoothed. Values in between are combinations of the smoothed and raw image.
+
+       **d** : int, optional
+           bilinear filter scale, by default 7
+
+       **sigma1** : int, optional
+           bilinear filter scale sigma 1, by default 15
+
+       **sigma2** : int, optional
+           bilinear filter scale sigma 2, by default 15
+
+       **gkernelsize** : tuple, optional
+           gaussian blur kernel size, by default (7, 7)
+
+   :Returns:
+
+       np.ndarray
+           shape (n_colors, 3) array of rgb colors
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:data:: ap
+   
+
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+

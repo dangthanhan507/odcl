@@ -1,0 +1,395 @@
+:py:mod:`odcl.Target`
+=====================
+
+.. py:module:: odcl.Target
+
+.. autoapi-nested-parse::
+
+   Idea:
+           After Object Detection Model extracts all of the targets detected,
+           we will have to store it in a data structure that will contain all of the targets, and more data.
+
+           2 classes will help accomplish this task in the pipeline.
+                   -TargetStore class that will store all of the targets and do any manipulation required of it.
+                   -Target class that will store Targets (not necessarily a copy of cropped image) and all the metadata that comes with it
+                           (GPS Location, Letter, Shape, ...etc.)
+
+   ..
+       !! processed by numpydoc !!
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   odcl.Target.Target
+   odcl.Target.TargetList
+
+
+
+
+.. py:class:: Target(shape: str = None, letter: str = None, heading: str = None, shape_color: str = None, letter_color: str = None, gps: (float, float) = None)
+
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+   .. py:method:: getGPS(self)
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+   .. py:method:: getShape(self)
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+   .. py:method:: getLetter(self)
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+   .. py:method:: getHeading(self)
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+   .. py:method:: getShapeColor(self)
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+   .. py:method:: getLetterColor(self)
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+   .. py:method:: setGPS(self, val)
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+   .. py:method:: setShape(self, val)
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+   .. py:method:: setLetter(self, val)
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+   .. py:method:: setHeading(self, val)
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+   .. py:method:: setShapeColor(self, val)
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+   .. py:method:: setLetterColor(self, val)
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+
+.. py:class:: TargetList
+
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+   .. py:method:: add_target(target: Target, arc_tolerance: float = 0.01)
+
+      
+      input: target (from Target class in Target.py)
+      output: nothing
+              self.target_list gets added
+
+      *NOTE: as of right now, the arc tolerance I set is arbitrary,
+      and should be modified when an appropriate one is found after
+      flight test.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+   .. py:method:: write_to_json(self)
+
+      
+      Objective of function:
+          Write the target lists into a readable json
+          submittable to competition.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+
